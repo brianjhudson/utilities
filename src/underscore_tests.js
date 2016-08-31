@@ -108,6 +108,17 @@ var _ = { };
   // a certain property in it. E.g. take an array of people and return
   // an array of just their ages
   _.pluck = function(array, propertyName) {
+    var results = [];
+    for (var i = 0; i < array.length; i++) {
+      var obj = array[i];
+      for (var prop in obj) {
+        if (prop === propertyName) {
+          results.push(obj[prop]);
+          break;
+        }
+      }
+    }
+    return results;
   };
 
   // Calls the method named by methodName on each value in the list.
