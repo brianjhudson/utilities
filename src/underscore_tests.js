@@ -152,6 +152,21 @@ var _ = { };
 
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        if (collection[i] === target) {
+          return true;
+        }
+      }
+    }
+    else if (collection === Object(collection)) {
+      for (var prop in collection) {
+        if (collection[prop] === target) {
+          return true;
+        }
+      }
+    }
+    return false;
   };
 
 
