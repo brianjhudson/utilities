@@ -84,6 +84,14 @@ var _ = { };
 
   // Produce   a duplicate-free version of the array.
   _.uniq = function(array) {
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+      var value = array[i];
+      if (newArray.indexOf(value) === -1) {
+        newArray.push(value);
+      }
+    }
+    return newArray;
   };
 
 
