@@ -171,7 +171,22 @@ var _ = { };
 
 
   // Determine whether all of the elements match a truth test.
+
   _.every = function(collection, iterator) {
+    if (!iterator) {
+      return true;
+    }
+    if (Array.isArray(collection)) {
+      for (var i = 0; i < collection.length; i++) {
+        if (!iterator(collection[i])) return false;
+      }
+    }
+    else if (collection === Object(collection)) {
+      for (var prop in collection) {
+        if (!iterator(collection[prop])) return false;
+      }
+    }
+    return true;
   };
 
   // Determine whether any of the elements pass a truth test. If no iterator is
