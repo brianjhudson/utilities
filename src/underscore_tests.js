@@ -135,16 +135,19 @@ var _ = { };
     }
     return list;
   };
-  //   for (var i = 0; i < list.length; i++) {
-  //     list[i] = list[i].methodName();
-  //   }
-  //   return list;
-  // };
 
   // Reduces an array or object to a single value by repetitively calling
   // iterator(previousValue, item) for each item. previousValue should be
   // the return value of the previous iterator call.
   _.reduce = function(collection, iterator, initialValue) {
+      if (initialValue === undefined) {
+        initialValue = 0
+      }
+      var previousValue = initialValue;
+      for (var i = 0; i < collection.length; i++) {
+        previousValue = iterator(previousValue, collection[i]);
+      }
+      return previousValue;
   };
 
   // Determine if the array or object contains a given value (using `===`).
