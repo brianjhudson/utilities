@@ -62,15 +62,18 @@ var _ = { };
 
   // Return all elements of an array that pass a truth test ('iterator' function argument)
   _.filter = function(collection, iterator) {
+      var filteredArray = [];
       for (var i = 0; i < collection.length; i++) {
         if (iterator(collection[i])) {
-          iterator(collection[i]);
+          filteredArray.push(collection[i]);
         }
       }
+      return filteredArray;
   };
 
   // Return all elements of an array that don't pass a truth test (the 'iterator' function argument)
   _.reject = function(collection, iterator) {
+    
   };
 
   // Produce   a duplicate-free version of the array.
